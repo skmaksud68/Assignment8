@@ -22,26 +22,69 @@ place. Do **NOT** rename the file.
 Check your work by knitting the document.
 
 1. Create a level 2 header below in Markdown with the name "Answer 1".
+ ## "Answer 1"
 
 
 2. Add an unordered Markdown list of your favorite food dishes and
 add their ingredients as sub-items in the list. You should enter at least two
 dishes with two ingredients each.
+myfav<- c("Rice", "Chicken", "Meat")
+> myfav
+[1] "Rice"    "Chicken" "Meat" 
 
+myfav2<-c("Salad","Chicken")
+> myfav2
+[1] "Salad"   "Chicken"
 
 3. Insert an R code chunk below. Show the `summary` of the `Orange` dataset.
 Run a linear regression using the `lm` function to predict `circumference` from
 `age` and assign the result. Show the `summary` of the fit object that you
 assigned.
 
+summary(Orange)
+ Tree       age         circumference  
+ 3:7   Min.   : 118.0   Min.   : 30.0  
+ 1:7   1st Qu.: 484.0   1st Qu.: 65.5  
+ 5:7   Median :1004.0   Median :115.0  
+ 2:7   Mean   : 922.1   Mean   :115.9  
+ 4:7   3rd Qu.:1372.0   3rd Qu.:161.5  
+       Max.   :1582.0   Max.   :214.0  
+> mymodel<-lm (circumference~! + age, data = Orange)
+> summary(mymodel)
+
+Call:
+lm(formula = circumference ~ !+age, data = Orange)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-85.857 -50.357  -0.857  45.643  98.143 
+
+Coefficients: (1 not defined because of singularities)
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  115.857      9.717   11.92 1.08e-13 ***
+!+ageTRUE         NA         NA      NA       NA    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 57.49 on 34 degrees of freedom
+
+
 
 4. Add an RMarkdown weblink (in link format) below to your favorite R reference
 website.
+https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf
 
 
 5. Replace the author field in the `yaml` header with your name and then
 successfully `knit` the RMarkdown document into a Word document.
-
+---
+title: "GitHub"
+author: "Maksudur Rahman"
+date: "6/28/2021"
+output:
+  word_document: default
+  
+---
 
 6. Follow the [Pull Request instructions on GitHub](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork)
 to submit your assignment via GitHub as a Pull Request to the [Assignment8][1]
